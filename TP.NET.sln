@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tp1 - Gestionnaire de fichiers", "Tp1\Tp1 - Gestionnaire de fichiers.csproj", "{4E53D68F-8FA2-4532-AB2D-5AEE98F53CD0}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP2 - Databinding", "TP2\TP2 - Databinding.csproj", "{A67BCF91-4706-4282-858F-9D917894A14D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculatrice", "Calculatrice\Calculatrice.csproj", "{ED7227C8-52B9-4F7A-8CFC-0745F7054697}"
 EndProject
 Global
@@ -15,14 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4E53D68F-8FA2-4532-AB2D-5AEE98F53CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4E53D68F-8FA2-4532-AB2D-5AEE98F53CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4E53D68F-8FA2-4532-AB2D-5AEE98F53CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4E53D68F-8FA2-4532-AB2D-5AEE98F53CD0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A67BCF91-4706-4282-858F-9D917894A14D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A67BCF91-4706-4282-858F-9D917894A14D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A67BCF91-4706-4282-858F-9D917894A14D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A67BCF91-4706-4282-858F-9D917894A14D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED7227C8-52B9-4F7A-8CFC-0745F7054697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED7227C8-52B9-4F7A-8CFC-0745F7054697}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7227C8-52B9-4F7A-8CFC-0745F7054697}.Release|Any CPU.ActiveCfg = Release|Any CPU
