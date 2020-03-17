@@ -29,7 +29,7 @@
         <Button Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Content="Bouton">
+                Content="Bouton" Click="Button_Click">
             
         </Button>
         
