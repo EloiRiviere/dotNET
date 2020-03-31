@@ -27,3 +27,6 @@ C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatri
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatrice.exe
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatrice.pdb
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\App.baml
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\obj\Debug\App.baml
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\bin\Debug\MathParser.org-mXparser.dll
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\obj\Debug\Calculatrice.csproj.CopyComplete
