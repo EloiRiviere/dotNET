@@ -1,0 +1,14 @@
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\bin\Debug\TP2.exe.config
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\bin\Debug\TP2.exe
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\bin\Debug\TP2.pdb
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2 - Databinding.csprojAssemblyReference.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\MainWindow.g.cs
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\App.g.cs
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2_MarkupCompile.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2_MarkupCompile.lref
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\MainWindow.baml
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2.g.resources
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2.Properties.Resources.resources
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2 - Databinding.csproj.GenerateResource.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2.exe
+C:\Users\EloiRivière\Documents\DevOps\dotNET\TP2\obj\Debug\TP2.pdb
