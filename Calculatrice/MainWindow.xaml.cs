@@ -14,41 +14,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Globalization;
 
 namespace Calculatrice
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow
     {
-        cls_Operations ope = new cls_Operations();
-        public event PropertyChangedEventHandler PropertyChanged;
-        private Dictionary<string, object> _propertyValues = new Dictionary<string, object>();
+        cls_NotifyPropertyChanged ObjComplexe = new cls_NotifyPropertyChanged();
+        cls_Operations Ope = new cls_Operations();
+        int NbEspace = 0;
+        string NbInUser = "";
 
         public string StrAffichageTbx
         {
-            get { return GetValue<string>(); }
-            set { SetValue(value); }
-        }
-
-        public T GetValue<T>([CallerMemberName] string propertyName = null)
-        {
-            if (_propertyValues.ContainsKey(propertyName))
-                return (T)_propertyValues[propertyName];
-            return default(T);
-        }
-        public bool SetValue<T>(T newValue, [CallerMemberName] string propertyName = null)
-        {
-            var currentValue = GetValue<T>(propertyName);
-            if (currentValue == null && newValue != null
-             || currentValue != null && !currentValue.Equals(newValue))
-            {
-                _propertyValues[propertyName] = newValue;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-            return false;
+            get { return ObjComplexe.GetValue<string>(); }
+            set { ObjComplexe.SetValue(value); }
         }
 
         public MainWindow()
@@ -68,62 +51,83 @@ namespace Calculatrice
 
         private void un_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '1';
             StrAffichageTbx = StrAffichageTbx + '1';
+            OptimiseAffichage();
+            MessageBox.Show(StrAffichageTbx);
         }
 
         private void deux_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '2';
             StrAffichageTbx = StrAffichageTbx + '2';
+            //MessageBox.Show(StrAffichageTbx);
         }
 
         private void trois_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '3';
             StrAffichageTbx = StrAffichageTbx + '3';
+            //MessageBox.Show(StrAffichageTbx);
         }
 
         private void quatre_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '4';
             StrAffichageTbx = StrAffichageTbx + '4';
         }
 
         private void cinq_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '5';
             StrAffichageTbx = StrAffichageTbx + '5';
         }
 
         private void six_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '6';
             StrAffichageTbx = StrAffichageTbx + '6';
         }
 
         private void sept_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '7';
             StrAffichageTbx = StrAffichageTbx + '7';
         }
 
         private void huit_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '8';
             StrAffichageTbx = StrAffichageTbx + '8';
         }
 
         private void neuf_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '9';
             StrAffichageTbx = StrAffichageTbx + '9';
+            OptimiseAffichage();
+            MessageBox.Show(StrAffichageTbx);
         }
 
         private void zéro_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = NbInUser + '0';
             StrAffichageTbx = StrAffichageTbx + '0';
         }
 
         private void clear_Click(object sender, RoutedEventArgs e)
         {
+            NbInUser = String.Empty;
             StrAffichageTbx = String.Empty;
         }
         
         private void delete_Click(object sender, RoutedEventArgs e)
         {
-            StrAffichageTbx = StrAffichageTbx.Remove(StrAffichageTbx.Length - 1, 1);
+            if (StrAffichageTbx.Length > 0)
+            {
+                NbInUser = StrAffichageTbx.Remove(StrAffichageTbx.Length - 1, 1);
+                StrAffichageTbx = StrAffichageTbx.Remove(StrAffichageTbx.Length - 1, 1);
+            }
         }
 
         private void plus_Click(object sender, RoutedEventArgs e)
@@ -167,7 +171,42 @@ namespace Calculatrice
             //AutreTbx.Text = '√('+ StrAffichageTbx + ')';
 
             //On calcul directement car un seul nombre attendu et affichage
-            StrAffichageTbx = Convert.ToString(ope.Racine(Convert.ToDouble(StrAffichageTbx)));
+            StrAffichageTbx = Convert.ToString(Ope.Racine(Convert.ToDouble(StrAffichageTbx)));
+        }
+
+        private void OptimiseAffichage() 
+        {
+            //double ResultatMod = Ope.Modulo(NbInUser.Length, 3);
+            ////S'il y a au minimum 4 caractères dans la chaîne on la réorganise
+            //if (NbInUser.Length > 3)
+            //{
+            //    switch (ResultatMod)
+            //    {
+            //        case 1:
+            //            if (NbInUser.Length > 4)
+            //            {
+            //                StrAffichageTbx = StrAffichageTbx.Remove(3, 1);
+            //            }
+            //            StrAffichageTbx = StrAffichageTbx.Insert(1, " ");
+            //            NbEspace++;
+            //            break;
+            //        case 2:
+            //            //On retire l'espace situé en position 1
+            //            StrAffichageTbx = StrAffichageTbx.Remove(1, 1);
+            //            StrAffichageTbx = StrAffichageTbx.Insert(2, " ");
+            //            NbEspace++;
+            //            break;
+            //        case 0:
+            //            //On retire l'espace situé en position 2
+            //            StrAffichageTbx = StrAffichageTbx.Remove(2, 1);
+            //            StrAffichageTbx = StrAffichageTbx.Insert(3, " ");
+            //            NbEspace++;
+            //            break;
+            //    }
+
+            //}
+            CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
+            StrAffichageTbx = String.Format(FR, "{0:0,0}", Convert.ToDouble(StrAffichageTbx));
         }
     }
 }

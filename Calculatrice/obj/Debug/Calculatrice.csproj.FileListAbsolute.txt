@@ -26,3 +26,4 @@ C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatri
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatrice.csproj.GenerateResource.cache
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatrice.exe
 C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\Calculatrice.pdb
+C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\App.baml

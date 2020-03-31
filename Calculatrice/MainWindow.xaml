@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="400">
+        Title="Calculateur à gressin" Height="550" Width="400" ResizeMode="NoResize" Topmost="True" WindowStartupLocation="CenterScreen" Background="White">
 
     <Grid Name="Grille">
         <Grid.ColumnDefinitions>
@@ -38,26 +38,55 @@
 
             <Button Name="modulo"
                     Grid.Column="0"
-                    Content="%" Click="modulo_Click"/>
+                    Content="%" 
+                    Click="modulo_Click" 
+                    Background="#FF333333" 
+                    Foreground="white"/>
 
             <Button Name="racine"
                     Grid.Column="1"
-                    Content="√" Click="racine_Click"/>
+                    Content="√" 
+                    Click="racine_Click" 
+                    Background="#FF333333" 
+                    Foreground="white"/>
 
             <Button Name="carré"
                     Grid.Column="2"
-                    Content="²"/>
+                    Content="²" 
+                    Background="#FF333333" 
+                    Foreground="white"/>
 
             <Button Name="clear"
                     Grid.Column="3"
-                    Content="Clear" Click="clear_Click"/>
+                    Content="Clear" Click="clear_Click" Background="#FF333333" Foreground="white"/>
 
+            <Button Content="Button">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="DarkGoldenrod"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            
         </Grid>
 
         <Grid Name="Pad"
               Margin="0,0,0,0"
               Grid.Column="0"
-              Grid.Row="2">
+              Grid.Row="2" Grid.Background="#444444">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -74,66 +103,67 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Content="1"
-                    FontSize="48" Click="un_Click"/>
+                    FontSize="48" Click="un_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="deux"
                     Grid.Column="1"
                     Grid.Row="0"
                     Content="2"
-                    FontSize="48" Click="deux_Click"/>
+                    FontSize="48" Click="deux_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="trois"
                     Grid.Column="2"
                     Grid.Row="0"
                     Content="3"
-                    FontSize="48" Click="trois_Click"/>
+                    FontSize="48" Click="trois_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="quatre"
                     Grid.Column="0"
                     Grid.Row="1"
                     Content="4"
-                    FontSize="48" Click="quatre_Click"/>
+                    FontSize="48" Click="quatre_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="cinq"
                     Grid.Column="1"
                     Grid.Row="1"
                     Content="5"
-                    FontSize="48" Click="cinq_Click"/>
+                    FontSize="48" Click="cinq_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="six"
                     Grid.Column="2"
                     Grid.Row="1"
                     Content="6"
-                    FontSize="48" Click="six_Click"/>
+                    FontSize="48" Click="six_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="sept"
                     Grid.Column="0"
                     Grid.Row="2"
                     Content="7"
-                    FontSize="48" Click="sept_Click"/>
+                    FontSize="48" Click="sept_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="huit"
                     Grid.Column="1"
                     Grid.Row="2"
                     Content="8"
-                    FontSize="48" Click="huit_Click"/>
+                    FontSize="48" Click="huit_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="neuf"
                     Grid.Column="2"
                     Grid.Row="2"
                     Content="9"
-                    FontSize="48" Click="neuf_Click"/>
+                    FontSize="48" Click="neuf_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="zéro"
                     Grid.Column="1"
                     Grid.Row="3"
                     Content="0"
-                    FontSize="48" Click="zéro_Click"/>
+                    FontSize="48" Click="zéro_Click" Background="#FF333333" Foreground="white"/>
         </Grid>
 
         <Grid Name="Commandes_2"
               Grid.Column="1"
-              Grid.Row="2">
+              Grid.Row="2"
+              Grid.Background="#444444">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -157,47 +187,47 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="Delete" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" Click="delete_Click"/>
+                    Content="Delete" Height="34" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" Click="delete_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="plus"
                     Grid.Row="1"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="+" Click="plus_Click"/>
+                    Content="+" Click="plus_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="moins"
                     Grid.Row="2"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="-" Click="moins_Click"/>
+                    Content="-" Click="moins_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="fois"
                     Grid.Row="3"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="x" Click="fois_Click"/>
+                    Content="x" Click="fois_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="par"
                     Grid.Row="4"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="/" Click="par_Click"/>
+                    Content="/" Click="par_Click" Background="#FF333333" Foreground="white"/>
 
             <Button Name="parenthèse_ouvrante"
                     Grid.Row="5"
                     Grid.Column="0"
-                    Content="("/>
+                    Content="(" Background="#FF333333" Foreground="white"/>
 
             <Button Name="parenthèse_fermante"
                     Grid.Row="5"
                     Grid.Column="1"
-                    Content=")"/>
+                    Content=")" Background="#FF333333" Foreground="white"/>
 
             <Button Name="Entrée"
                     Grid.Row="11"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="Entrée ◄┘" Click="Entrée_Click"/>
+                    Content="Entrée ◄┘" Click="Entrée_Click" Background="#FF333333" Foreground="white"/>
         </Grid>
 
     </Grid>
