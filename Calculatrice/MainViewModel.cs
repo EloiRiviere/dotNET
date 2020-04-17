@@ -16,6 +16,13 @@ namespace Calculatrice
             set { SetValue(value); }
         }
 
+        public string AffichagesHistorique
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+
+        }
+
         public MainViewModel()
         {
             StrAffichageTbx = string.Empty;

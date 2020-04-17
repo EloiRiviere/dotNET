@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Globalization;
-using org.mariuszgromada.math.mxparser;
+using System.Collections.Generic;
 
 namespace Calculatrice
 {
@@ -10,9 +10,10 @@ namespace Calculatrice
     /// </summary>
     public partial class MainWindow
     {
-        // cls_Operations Ope = new cls_Operations();
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
+        List<KeyValuePair<string, string>> historique = new List<KeyValuePair<string, string>>();
+
 
         public MainWindow()
         {
@@ -25,17 +26,58 @@ namespace Calculatrice
         {
             // gérer les caractères spéciaux
             resultatAffiche = true;
-            Console.WriteLine(mvm.NbInUser);
-            mvm.NbInUser = mvm.NbInUser.Replace(" ","");
-            mvm.NbInUser = mvm.NbInUser.Replace("x", "*");
-            mvm.NbInUser = mvm.NbInUser.Replace("√", "sqrt");
-            Console.WriteLine(mvm.NbInUser);
 
-            Function fct = new Function("fct() = " + mvm.NbInUser);
-            org.mariuszgromada.math.mxparser.Expression exp = new org.mariuszgromada.math.mxparser.Expression("fct()", fct);
-            mvm.StrAffichageTbx = Convert.ToString(exp.calculate());
+            string calcul = mvm.NbInUser;
+
+            calcul = calcul.Replace(" ","");
+            calcul = calcul.Replace("x", "*");
+            calcul = calcul.Replace("√", "sqrt");
+            calcul = calcul.Replace("²", "^2");
+            calcul = calcul.Replace("%", "mod(");
+
+            Console.WriteLine(calcul);
+
+            org.mariuszgromada.math.mxparser.Expression exp = new org.mariuszgromada.math.mxparser.Expression(calcul);
+            
+            string resultat = Convert.ToString(exp.calculate());
+
+            if(resultat.Equals("NaN"))
+            {
+                resultat = "Erreur de syntaxe";
+                // resultat = "Erreur de syntaxe dans le calcul :\n" + calcul;
+            }
+            else
+            {
+                historique.Add(new KeyValuePair<string, string>(calcul, resultat));
+                mvm.AffichagesHistorique = historiqueToString(historique);
+                // Console.WriteLine(historique);
+            }
+
+            resultat = resultat.Replace(",", ".");
+
+            mvm.StrAffichageTbx = resultat;
+
+            // Console.WriteLine(calcul);
         }
 
+        private string historiqueToString(List<KeyValuePair<string, string>> historique)
+        {
+            string valueHistoriqueToString = String.Empty;
+            if (historique.Count >= 2)
+            {
+                string avantDernierCalcul = historique[historique.Count - 2].Key;
+                string avantDernierResultat = historique[historique.Count - 2].Value;
+                valueHistoriqueToString += avantDernierCalcul + "\n" + avantDernierResultat + "\n";
+            }
+            
+            string DernierCalcul = historique[historique.Count - 1].Key;
+            string DernierResultat = historique[historique.Count - 1].Value;
+
+            valueHistoriqueToString += DernierCalcul + "\n" + DernierResultat;
+
+            Console.WriteLine("Historique: " + valueHistoriqueToString);
+            return valueHistoriqueToString;
+        }
         private void clicBtnNumero(char BtnContent)
         {
             if (resultatAffiche == true)
@@ -157,6 +199,12 @@ namespace Calculatrice
             mvm.StrAffichageTbx = String.Empty;
         }
 
+        private void carre_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "²";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
         private void parenthèse_ouvrante_Click(object sender, RoutedEventArgs e)
         {
             mvm.NbInUser += "(";
@@ -169,12 +217,47 @@ namespace Calculatrice
             mvm.StrAffichageTbx = String.Empty;
         }
 
-        private void OptimiseAffichage() 
+        private void puissance_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "^(";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
+        private void logarithme_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "ln(";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
+        private void sinus_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "sin(";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
+        private void cosinus_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "cos(";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
+        private void tan_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += "tan(";
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
+        private void virgule_Click(object sender, RoutedEventArgs e)
+        {
+            mvm.NbInUser += ".";
+            mvm.StrAffichageTbx += ".";
+        }
+
+        private void OptimiseAffichage()
         {
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
-            mvm.StrAffichageTbx = String.Format(FR, "{0:#,#}", Convert.ToDouble(mvm.StrAffichageTbx));
+            mvm.StrAffichageTbx = String.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
         }
-
     }
 }

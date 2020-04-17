@@ -66,6 +66,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ArrayList.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="cls_Operations.cs" />
     <Compile Include="MainWindow.xaml.cs">

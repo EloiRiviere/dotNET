@@ -70,11 +70,12 @@
                     Background="#FF333333" 
                     Foreground="white"/>
 
-            <Button Name="carré"
+            <Button Name="carre"
                     Grid.Column="2"
                     Content="²" 
                     Background="#FF333333" 
-                    Foreground="white"/>
+                    Foreground="white"
+                    Click="carre_Click"/>
 
             <Button Name="clear"
                     Grid.Column="3"
@@ -182,6 +183,15 @@
                     Background="#FF333333"
                     Foreground="white"/>
 
+            <Button Name="history"
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   FontSize="22"
+                   Foreground="white"
+                   Background="#FF333333">
+                <TextBlock Text="{Binding AffichagesHistorique}"/>
+            </Button>
+
             <Button Name="zéro"
                     Grid.Column="1"
                     Grid.Row="3"
@@ -231,41 +241,37 @@
             <Button Name="plus"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
                     Content="+" 
                     Click="plus_Click"
                     Background="#FF333333"
                     Foreground="white"/>
 
             <Button Name="moins"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                    Grid.Row="1"
+                    Grid.Column="1"
                     Content="-"
                     Click="moins_Click"
                     Background="#FF333333"
                     Foreground="white"/>
 
             <Button Name="fois"
-                    Grid.Row="3"
+                    Grid.Row="2"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
                     Content="x"
                     Click="fois_Click"
                     Background="#FF333333"
                     Foreground="white"/>
 
             <Button Name="par"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
+                    Grid.Row="2"
+                    Grid.Column="1"
                     Content="/"
                     Click="par_Click"
                     Background="#FF333333"
                     Foreground="white"/>
 
             <Button Name="parenthèse_ouvrante"
-                    Grid.Row="5"
+                    Grid.Row="3"
                     Grid.Column="0"
                     Content="("
                     Background="#FF333333"
@@ -273,12 +279,64 @@
                     Click="parenthèse_ouvrante_Click"/>
 
             <Button Name="parenthèse_fermante"
-                    Grid.Row="5"
+                    Grid.Row="3"
                     Grid.Column="1"
                     Content=")"
                     Background="#FF333333"
                     Foreground="white"
                     Click="parenthèse_fermante_Click"/>
+
+            <Button Name="puissance"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Content="^"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="puissance_Click"/>
+
+            <Button Name="logarithme"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Content="ln"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="logarithme_Click"/>
+
+            <Button Name="sinus"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="sin"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="sinus_Click"/>
+
+            <Button Name="cosinus"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="cos"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="cosinus_Click"/>
+
+            <Button Name="tangente"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="tan"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="tan_Click"/>
+
+            <Button Name="virgule"
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Content="."
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="virgule_Click"/>
 
             <Button Name="Entrée"
                     Grid.Row="11"
