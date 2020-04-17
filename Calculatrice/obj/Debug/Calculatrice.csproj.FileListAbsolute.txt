@@ -30,3 +30,4 @@ C:\Users\paulw\Desktop\RealCalculatrice\dotNET\Calculatrice\obj\Debug\App.baml
 C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\obj\Debug\App.baml
 C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\bin\Debug\MathParser.org-mXparser.dll
 C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\obj\Debug\Calculatrice.csproj.CopyComplete
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Calculatrice\obj\Debug\Calculatrice.csproj.CoreCompileInputs.cache

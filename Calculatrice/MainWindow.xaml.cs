@@ -10,7 +10,7 @@ namespace Calculatrice
     /// </summary>
     public partial class MainWindow
     {
-        cls_Operations Ope = new cls_Operations();
+        // cls_Operations Ope = new cls_Operations();
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
 
@@ -23,8 +23,14 @@ namespace Calculatrice
         // A l'évènement égale on calcule et on affiche le résultat
         private void Entrée_Click(object sender, RoutedEventArgs e) 
         {
-            // gérer le 'x' et le '√'
+            // gérer les caractères spéciaux
             resultatAffiche = true;
+            Console.WriteLine(mvm.NbInUser);
+            mvm.NbInUser = mvm.NbInUser.Replace(" ","");
+            mvm.NbInUser = mvm.NbInUser.Replace("x", "*");
+            mvm.NbInUser = mvm.NbInUser.Replace("√", "sqrt");
+            Console.WriteLine(mvm.NbInUser);
+
             Function fct = new Function("fct() = " + mvm.NbInUser);
             org.mariuszgromada.math.mxparser.Expression exp = new org.mariuszgromada.math.mxparser.Expression("fct()", fct);
             mvm.StrAffichageTbx = Convert.ToString(exp.calculate());
