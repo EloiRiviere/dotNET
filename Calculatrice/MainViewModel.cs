@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 
 namespace Calculatrice
 {
@@ -16,17 +17,41 @@ namespace Calculatrice
             set { SetValue(value); }
         }
 
-        public string AffichagesHistorique
+        public string AffichagesHistoriqueCalcAD
         {
             get { return GetValue<string>(); }
             set { SetValue(value); }
+        }
 
+        public string AffichagesHistoriqueResAD
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        public string AffichagesHistoriqueCalcD
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        public string AffichagesHistoriqueResD
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
+        public ObservableCollection<string> historiqueObservable
+        {
+            get { return GetValue<ObservableCollection<string>>(); }
+            set { SetValue(value); }
         }
 
         public MainViewModel()
         {
             StrAffichageTbx = string.Empty;
             NbInUser = string.Empty;
+            historiqueObservable = new ObservableCollection<string>();
         }
     }
 }

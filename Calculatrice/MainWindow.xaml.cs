@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Globalization;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Calculatrice
 {
@@ -13,6 +14,7 @@ namespace Calculatrice
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
         List<KeyValuePair<string, string>> historique = new List<KeyValuePair<string, string>>();
+        
 
 
         public MainWindow()
@@ -49,7 +51,16 @@ namespace Calculatrice
             else
             {
                 historique.Add(new KeyValuePair<string, string>(calcul, resultat));
-                mvm.AffichagesHistorique = historiqueToString(historique);
+                mvm.AffichagesHistoriqueCalcAD = historiqueToString(historique)[0];
+                mvm.AffichagesHistoriqueResAD = historiqueToString(historique)[1];
+                mvm.AffichagesHistoriqueCalcD = historiqueToString(historique)[2];
+                mvm.AffichagesHistoriqueResD = historiqueToString(historique)[3];
+
+                Console.WriteLine(mvm.historiqueObservable);
+
+                mvm.historiqueObservable.Add(calcul);
+                mvm.historiqueObservable.Add(resultat);
+
                 // Console.WriteLine(historique);
             }
 
@@ -60,13 +71,16 @@ namespace Calculatrice
             // Console.WriteLine(calcul);
         }
 
-        private string historiqueToString(List<KeyValuePair<string, string>> historique)
+        private List<string> historiqueToString(List<KeyValuePair<string, string>> historique)
         {
             string valueHistoriqueToString = String.Empty;
+            string avantDernierCalcul = String.Empty;
+            string avantDernierResultat = String.Empty;
+
             if (historique.Count >= 2)
             {
-                string avantDernierCalcul = historique[historique.Count - 2].Key;
-                string avantDernierResultat = historique[historique.Count - 2].Value;
+                avantDernierCalcul = historique[historique.Count - 2].Key;
+                avantDernierResultat = historique[historique.Count - 2].Value;
                 valueHistoriqueToString += avantDernierCalcul + "\n" + avantDernierResultat + "\n";
             }
             
@@ -76,7 +90,8 @@ namespace Calculatrice
             valueHistoriqueToString += DernierCalcul + "\n" + DernierResultat;
 
             Console.WriteLine("Historique: " + valueHistoriqueToString);
-            return valueHistoriqueToString;
+            //return valueHistoriqueToString;
+            return new List<string> { avantDernierCalcul, avantDernierResultat, DernierCalcul, DernierResultat };
         }
         private void clicBtnNumero(char BtnContent)
         {
@@ -251,6 +266,21 @@ namespace Calculatrice
         {
             mvm.NbInUser += ".";
             mvm.StrAffichageTbx += ".";
+        }
+
+        private void history_Click_Up(object sender, RoutedEventArgs e)
+        {
+            Historique.Visibility = Visibility.Visible;
+
+            for(int i = 0 ; i < ListeHistorique.Items.Count; i = i + 2)
+            {
+                //ListeHistorique.Items.GetItemAt(i).HorizontalAlignment = HorizontalAlignment.Right;
+            }
+        }
+
+        private void history_Click_Down(object sender, RoutedEventArgs e)
+        {
+            Historique.Visibility = Visibility.Collapsed;
         }
 
         private void OptimiseAffichage()

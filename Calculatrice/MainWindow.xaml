@@ -83,7 +83,7 @@
                     Click="clear_Click"
                     Background="#FF333333"
                     Foreground="white"/>
-            
+
         </Grid>
 
         <Grid Name="Pad"
@@ -184,12 +184,32 @@
                     Foreground="white"/>
 
             <Button Name="history"
-                   Grid.Column="0"
-                   Grid.Row="3"
-                   FontSize="22"
-                   Foreground="white"
-                   Background="#FF333333">
-                <TextBlock Text="{Binding AffichagesHistorique}"/>
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Foreground="white"
+                    Background="#FF333333"
+                    Click="history_Click_Up">
+                <Grid Height="90"
+                          Width="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding AffichagesHistoriqueCalcAD}"
+                                   TextAlignment="Left"
+                                   Grid.Row="0" HorizontalAlignment="Left" Width="90" Height="22" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueResAD}"
+                                   TextAlignment="Right"
+                                   Grid.Row="1"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueCalcD}"
+                                   TextAlignment="Left"
+                                   Grid.Row="2" Height="22" Margin="0,0,0,0.2" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueResD}"
+                                   TextAlignment="Right"
+                                   Grid.Row="3"/>
+                </Grid>
             </Button>
 
             <Button Name="zéro"
@@ -221,8 +241,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="49.6"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Name="delete"
@@ -346,6 +366,51 @@
                     Click="Entrée_Click"
                     Background="#FF333333"
                     Foreground="white"/>
+        </Grid>
+
+        <Grid Name="Historique"
+              Visibility="Collapsed"
+              Grid.Column="0"
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              Grid.RowSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid   Grid.Column="0"
+                    Background="#FF333333">
+
+                <ListView Background="#FF333333"
+                          Name="ListeHistorique"
+                          Foreground="White"
+                          ItemsSource="{Binding historiqueObservable}">
+
+
+                </ListView>
+
+            </Grid>
+
+            <Grid   Grid.Column="1"
+                        Background="#FF333333">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Click="history_Click_Down"
+                                Background="#FF333333"
+                                Foreground="white"
+                                Grid.Row="1"
+                                Content="Retour">
+
+                </Button>
+
+            </Grid>
+
         </Grid>
 
     </Grid>
