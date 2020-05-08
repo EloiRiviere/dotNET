@@ -47,6 +47,12 @@ namespace Calculatrice
             set { SetValue(value); }
         }
 
+        public string selectedHistoryValue
+        {
+            get { return GetValue<string>(); }
+            set { SetValue(value); }
+        }
+
         public MainViewModel()
         {
             StrAffichageTbx = string.Empty;

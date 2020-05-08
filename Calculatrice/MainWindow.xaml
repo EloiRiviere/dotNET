@@ -79,7 +79,7 @@
 
             <Button Name="clear"
                     Grid.Column="3"
-                    Content="Clear"
+                    Content="Vider"
                     Click="clear_Click"
                     Background="#FF333333"
                     Foreground="white"/>
@@ -249,7 +249,7 @@
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="Delete"
+                    Content="Effacer"
                     Height="34"
                     VerticalAlignment="Top"
                     HorizontalAlignment="Left"
@@ -386,7 +386,10 @@
                 <ListView Background="#FF333333"
                           Name="ListeHistorique"
                           Foreground="White"
-                          ItemsSource="{Binding historiqueObservable}">
+                          ItemsSource="{Binding historiqueObservable}"
+                          SelectedItem="{Binding selectedHistoryValue}"
+                          SelectionChanged="ListeHistorique_SelectionChanged"
+                          >
 
 
                 </ListView>
@@ -397,14 +400,23 @@
                         Background="#FF333333">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="11*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
+
+                <Button Click="history_Empty"
+                        Background="#FF333333"
+                        Foreground="white"
+                        Grid.Row="0"
+                        Content="Vider">
+                    
+                </Button>
 
                 <Button Click="history_Click_Down"
                                 Background="#FF333333"
                                 Foreground="white"
-                                Grid.Row="1"
+                                Grid.Row="2"
                                 Content="Retour">
 
                 </Button>

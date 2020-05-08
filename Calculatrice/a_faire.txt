@@ -1,3 +1,4 @@
 saisie clavier
+
+# bat les couilles
 ajouter , (gérer formatter)
-historique : clear, rechargement

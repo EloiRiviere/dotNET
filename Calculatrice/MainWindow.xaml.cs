@@ -97,8 +97,8 @@ namespace Calculatrice
         {
             if (resultatAffiche == true)
             {
-                mvm.NbInUser = string.Empty;
-                mvm.StrAffichageTbx = string.Empty;
+                mvm.NbInUser = String.Empty;
+                mvm.StrAffichageTbx = String.Empty;
                 resultatAffiche = false;
             }
             mvm.NbInUser = mvm.NbInUser + BtnContent;
@@ -172,94 +172,98 @@ namespace Calculatrice
             OptimiseAffichage();
         }
 
+        private void clickBtnOperation()
+        {
+            if (resultatAffiche == true)
+            {
+                mvm.NbInUser = mvm.StrAffichageTbx;
+                resultatAffiche = false;
+            }
+            mvm.StrAffichageTbx = String.Empty;
+        }
+
         private void plus_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += " + ";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void moins_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += " - ";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void fois_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += " x ";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void par_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += " / ";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void modulo_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += " % ";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void racine_Click(object sender, RoutedEventArgs e)
         {
-            //On sauvegarde les données de StrAffichageTbx dans autre tbx en rajoutant l'opérateur
+            clickBtnOperation();
             mvm.NbInUser += "√(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void carre_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "²";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void parenthèse_ouvrante_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void parenthèse_fermante_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += ")";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void puissance_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "^(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void logarithme_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "ln(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void sinus_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "sin(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void cosinus_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "cos(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void tan_Click(object sender, RoutedEventArgs e)
         {
+            clickBtnOperation();
             mvm.NbInUser += "tan(";
-            mvm.StrAffichageTbx = String.Empty;
         }
 
         private void virgule_Click(object sender, RoutedEventArgs e)
@@ -288,6 +292,34 @@ namespace Calculatrice
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
             mvm.StrAffichageTbx = String.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
+        }
+
+        private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            try
+            {
+                mvm.StrAffichageTbx = ListeHistorique.SelectedItem.ToString();
+                mvm.NbInUser = ListeHistorique.SelectedItem.ToString();
+                resultatAffiche = false;
+            }
+            // Gérer exception si on vide l'historique
+            catch(System.NullReferenceException)
+            {
+                Console.WriteLine("Historique vidé.");
+            }
+        }
+
+        private void history_Empty(object sender, RoutedEventArgs e)
+        {
+            // Nettoyer historique
+            mvm.historiqueObservable.Clear();
+
+            // Nettoyer affichage bouton historique
+            historique.Clear();
+            mvm.AffichagesHistoriqueCalcAD = String.Empty;
+            mvm.AffichagesHistoriqueResAD = String.Empty;
+            mvm.AffichagesHistoriqueCalcD = String.Empty;
+            mvm.AffichagesHistoriqueResD = String.Empty;
         }
     }
 }
