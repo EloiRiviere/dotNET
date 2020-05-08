@@ -30,7 +30,7 @@ namespace Calculatrice
         /*
         private void testEnter(object sender, KeyEventArgs eventKeyUpEnter)
         {
-            Console.WriteLine("La grosse bite en plâtre.");
+            Console.WriteLine("Test.");
         }
         */
 
