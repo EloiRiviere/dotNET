@@ -3,6 +3,7 @@ using System.Windows;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace Calculatrice
 {
@@ -14,14 +15,24 @@ namespace Calculatrice
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
         List<KeyValuePair<string, string>> historique = new List<KeyValuePair<string, string>>();
-        
-
 
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = mvm;
+
+            /*
+            KeyEventArgs eventKeyUpEnter = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.Enter);
+            eventKeyUpEnter.RoutedEvent = Keyboard.KeyDownEvent;
+            InputManager.Current.ProcessInput(eventKeyUpEnter);
+            */
         }
+        /*
+        private void testEnter(object sender, KeyEventArgs eventKeyUpEnter)
+        {
+            Console.WriteLine("La grosse bite en plâtre.");
+        }
+        */
 
         // A l'évènement égale on calcule et on affiche le résultat
         private void Entrée_Click(object sender, RoutedEventArgs e) 
@@ -29,6 +40,7 @@ namespace Calculatrice
             // gérer les caractères spéciaux
             resultatAffiche = true;
 
+            string calculUtilisateur = mvm.NbInUser;
             string calcul = mvm.NbInUser;
 
             calcul = calcul.Replace(" ","");
@@ -50,7 +62,7 @@ namespace Calculatrice
             }
             else
             {
-                historique.Add(new KeyValuePair<string, string>(calcul, resultat));
+                historique.Add(new KeyValuePair<string, string>(calculUtilisateur, resultat));
                 mvm.AffichagesHistoriqueCalcAD = historiqueToString(historique)[0];
                 mvm.AffichagesHistoriqueResAD = historiqueToString(historique)[1];
                 mvm.AffichagesHistoriqueCalcD = historiqueToString(historique)[2];
@@ -58,7 +70,7 @@ namespace Calculatrice
 
                 Console.WriteLine(mvm.historiqueObservable);
 
-                mvm.historiqueObservable.Add(calcul);
+                mvm.historiqueObservable.Add(calculUtilisateur);
                 mvm.historiqueObservable.Add(resultat);
 
                 // Console.WriteLine(historique);
