@@ -2,18 +2,18 @@
 using System.Windows;
 using System.Globalization;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.ComponentModel;
 
 namespace Calculatrice
 {
-    /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
-    /// </summary>
     public partial class MainWindow
     {
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
+
+        const string cheminFichierBinaireHistorique = @"sauvegarde_historique";
         List<KeyValuePair<string, string>> historique = new List<KeyValuePair<string, string>>();
 
         public MainWindow()
@@ -21,20 +21,14 @@ namespace Calculatrice
             InitializeComponent();
             this.DataContext = mvm;
 
-            /*
-            KeyEventArgs eventKeyUpEnter = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.Enter);
-            eventKeyUpEnter.RoutedEvent = Keyboard.KeyDownEvent;
-            InputManager.Current.ProcessInput(eventKeyUpEnter);
-            */
+            // Chargement de l'historique
+            using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                binaryFormatter.Serialize(stream, historique);
+            }
         }
-        /*
-        private void testEnter(object sender, KeyEventArgs eventKeyUpEnter)
-        {
-            Console.WriteLine("Test.");
-        }
-        */
 
-        // A l'évènement égale on calcule et on affiche le résultat
         private void Entrée_Click(object sender, RoutedEventArgs e) 
         {
             // gérer les caractères spéciaux
@@ -102,7 +96,6 @@ namespace Calculatrice
             valueHistoriqueToString += DernierCalcul + "\n" + DernierResultat;
 
             Console.WriteLine("Historique: " + valueHistoriqueToString);
-            //return valueHistoriqueToString;
             return new List<string> { avantDernierCalcul, avantDernierResultat, DernierCalcul, DernierResultat };
         }
         private void clicBtnNumero(char BtnContent)
@@ -288,10 +281,12 @@ namespace Calculatrice
         {
             Historique.Visibility = Visibility.Visible;
 
+            /* // Aligner les résultats à droite
             for(int i = 0 ; i < ListeHistorique.Items.Count; i = i + 2)
             {
                 //ListeHistorique.Items.GetItemAt(i).HorizontalAlignment = HorizontalAlignment.Right;
             }
+            */
         }
 
         private void history_Click_Down(object sender, RoutedEventArgs e)
@@ -332,6 +327,15 @@ namespace Calculatrice
             mvm.AffichagesHistoriqueResAD = String.Empty;
             mvm.AffichagesHistoriqueCalcD = String.Empty;
             mvm.AffichagesHistoriqueResD = String.Empty;
+        }
+
+        List<KeyValuePair<string, string>> MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
+            {
+                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                return (List<KeyValuePair<string, string>>)binaryFormatter.Deserialize(stream);
+            }
         }
     }
 }
