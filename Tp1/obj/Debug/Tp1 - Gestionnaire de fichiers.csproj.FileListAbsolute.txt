@@ -1,0 +1,10 @@
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\bin\Debug\Tp1.exe.config
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\bin\Debug\Tp1.exe
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\bin\Debug\Tp1.pdb
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1 - Gestionnaire de fichiers.csprojAssemblyReference.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1.Form1.resources
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1.Properties.Resources.resources
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1 - Gestionnaire de fichiers.csproj.GenerateResource.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1 - Gestionnaire de fichiers.csproj.CoreCompileInputs.cache
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1.exe
+C:\Users\EloiRivière\Documents\DevOps\dotNET\Tp1\obj\Debug\Tp1.pdb

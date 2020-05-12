@@ -11,7 +11,9 @@
         ResizeMode="NoResize"
         Topmost="True"
         WindowStartupLocation="CenterScreen"
-        Background="White" Icon="gressins2.png">
+        Background="White" Icon="gressins2.png"
+        KeyDown="Window_KeyDown"
+        Name ="Window1">
 
     <Grid Name="Grille"
           Background="#FF444444">
@@ -212,12 +214,12 @@
                 </Grid>
             </Button>
 
-            <Button Name="zéro"
+            <Button Name="zero"
                     Grid.Column="1"
                     Grid.Row="3"
                     Content="0"
                     FontSize="48"
-                    Click="zéro_Click"
+                    Click="zero_Click"
                     Background="#FF333333"
                     Foreground="white"/>
         </Grid>

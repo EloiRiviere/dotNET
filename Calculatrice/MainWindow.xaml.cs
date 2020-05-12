@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace Calculatrice
 {
@@ -156,7 +157,7 @@ namespace Calculatrice
             clicBtnNumero('9');
         }
 
-        private void zéro_Click(object sender, RoutedEventArgs e)
+        private void zero_Click(object sender, RoutedEventArgs e)
         {
             clicBtnNumero('0');
         }
@@ -336,6 +337,102 @@ namespace Calculatrice
                 var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                 return (List<KeyValuePair<string, string>>)binaryFormatter.Deserialize(stream);
             }
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.NumPad0:
+                    zero_Click(sender, e);
+                    break;
+                case Key.NumPad1:
+                    un_Click(sender, e);
+                    break;
+                case Key.NumPad2:
+                    deux_Click(sender, e);
+                    break;
+                case Key.NumPad3:
+                    trois_Click(sender, e);
+                    break;
+                case Key.NumPad4:
+                    quatre_Click(sender, e);
+                    break;
+                case Key.NumPad5:
+                    cinq_Click(sender, e);
+                    break;
+                case Key.NumPad6:
+                    six_Click(sender, e);
+                    break;
+                case Key.NumPad7:
+                    sept_Click(sender, e);
+                    break;
+                case Key.NumPad8:
+                    huit_Click(sender, e);
+                    break;
+                case Key.NumPad9:
+                    neuf_Click(sender, e);
+                    break;
+                case Key.Divide:
+                   par_Click(sender, e);
+                    break;
+                case Key.Multiply:
+                    fois_Click(sender, e);
+                    break;
+                case Key.Add:
+                    plus_Click(sender, e);
+                    break;
+                case Key.Subtract:
+                    moins_Click(sender, e);
+                    break;
+                case Key.Return:
+                    Entrée_Click(sender, e);
+                    break;
+                case Key.OemQuotes:
+                    carre_Click(sender, e);
+                    break;
+                case Key.D5:
+                    parenthèse_ouvrante_Click(sender, e);
+                    break;
+                case Key.OemOpenBrackets:
+                    parenthèse_fermante_Click(sender, e);
+                    break;
+                case Key.L:
+                    logarithme_Click(sender, e);
+                    break;
+                case Key.R:
+                    racine_Click(sender, e);
+                    break;
+                case Key.M:
+                    modulo_Click(sender, e);
+                    break;
+                case Key.Oem6:
+                    puissance_Click(sender, e);
+                    break;
+                case Key.S:
+                    sinus_Click(sender, e);
+                    break;
+                case Key.C:
+                    cosinus_Click(sender, e);
+                    break;
+                case Key.T:
+                    tan_Click(sender, e);
+                    break;
+                case Key.Decimal:
+                    virgule_Click(sender, e);
+                    break;
+                case Key.Back:
+                    delete_Click(sender, e);
+                    break;
+                case Key.Delete:
+                    clear_Click(sender, e);
+                    break;
+                default:
+                    Console.WriteLine("Touche inconnue");
+                    break;
+                
+            }
+            Console.WriteLine(e.Key);
         }
     }
 }
