@@ -6,7 +6,67 @@
         xmlns:local="clr-namespace:PasswordsManager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel Name="Background" Background="#FF444444">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="Liste" Width="5*"/>
+                <ColumnDefinition Name="Edition" Width="0*"/>
+            </Grid.ColumnDefinitions>
+
+            <ListBox Grid.Column="0"
+                     Background="Transparent"
+                     HorizontalAlignment="Left" Width="792">
+            </ListBox>
+
+            <Button Grid.Column="0"
+                    Width="20"
+                    Height="40"
+                    HorizontalAlignment="Right"
+                    Background="#FF333333"
+                    Click="Button_Click">
+
+                <Image Name="Fleche" Source="/PasswordsManager;component/assets/chevron_gauche.png"/>
+
+            </Button>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Name="FormulaireEspaceHaut" Height="4*"/>
+                    <RowDefinition Name="FormulaireIdentifiant" Height="1*"/>
+                    <RowDefinition Name="FormulaireMotDePasse" Height="1*"/>
+                    <RowDefinition Name="FormulaireSite" Height="1*"/>
+                    <RowDefinition Name="FormulaireTag" Height="1*"/>
+                    <RowDefinition Name="FormulaireBoutonAjout" Height="1*"/>
+                    <RowDefinition Name="FormulaireEspaceBas" Height="4*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Name="FormulaireEspaceGauche" Width="1*"/>
+                    <ColumnDefinition Name="FormulaireLabelsColonne" Width="5*"/>
+                    <ColumnDefinition Name="FormulaireDonneesColonne" Width="5*"/>
+                    <ColumnDefinition Name="FormulaireEspaceDroit" Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Background="Transparent" Grid.Row="1" Grid.Column="1" Text="Identifiant" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeIdentifiant" Background="Transparent" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+
+                <TextBlock Background="Transparent" Grid.Row="2" Grid.Column="1" Text="Mot de passe" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeMotDePasse" Background="Transparent" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+
+                <TextBlock Background="Transparent" Grid.Row="3" Grid.Column="1" Text="URL du Site" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
+
+                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Tag" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center"/>
+
+                <Button Background="#FF333333"
+                        Grid.Row="5"
+                        Grid.Column="2"
+                        Content="Enregistrer"/>
+
+            </Grid>
+
+
+
+        </Grid>
+    </DockPanel>
 </Window>

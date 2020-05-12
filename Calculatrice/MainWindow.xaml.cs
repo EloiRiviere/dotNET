@@ -25,7 +25,7 @@ namespace Calculatrice
             // Chargement de l'historique
             using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
             {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, historique);
             }
         }
@@ -299,7 +299,7 @@ namespace Calculatrice
         {
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
-            mvm.StrAffichageTbx = String.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
+            mvm.StrAffichageTbx = string.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
         }
 
         private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -334,7 +334,7 @@ namespace Calculatrice
         {
             using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
             {
-                var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                var binaryFormatter = new BinaryFormatter();
                 return (List<KeyValuePair<string, string>>)binaryFormatter.Deserialize(stream);
             }
         }

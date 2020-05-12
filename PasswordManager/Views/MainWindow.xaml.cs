@@ -22,6 +22,7 @@ namespace PasswordsManager.Views
     public partial class MainWindow : Window
     {
         private MainViewModel _viewModel;
+        private Boolean isEditionOpened;
 
         public MainWindow()
         {
@@ -29,6 +30,23 @@ namespace PasswordsManager.Views
 
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
+
+            isEditionOpened = false;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            int EditionColumnSize = 2;
+            
+            // Fleche.Source = new ImageSource("/PasswordsManager;component/assets/chevron_gauche.png";
+
+            if(isEditionOpened)
+            {
+                EditionColumnSize = 0;
+            }
+
+            isEditionOpened = !isEditionOpened;
+            Edition.Width = new GridLength(EditionColumnSize, GridUnitType.Star);
         }
     }
 }
