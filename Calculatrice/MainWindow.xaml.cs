@@ -299,7 +299,8 @@ namespace Calculatrice
         {
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
-            mvm.StrAffichageTbx = string.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
+            // mvm.StrAffichageTbx = Convert.ToDouble(mvm.StrAffichageTbx).ToString("#,##0", new CultureInfo("fr-FR"));
+            mvm.StrAffichageTbx = string.Format(FR, "{0:#.#}", Convert.ToString(mvm.StrAffichageTbx));
         }
 
         private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
