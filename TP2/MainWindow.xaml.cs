@@ -81,5 +81,10 @@ namespace TP2
             MonTexte = "Un autre texte !";
             MaListe.Remove(TexteSelectionne);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MonTexte = "Un autre texte !";
+        }
     }
 }
