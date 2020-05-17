@@ -14,7 +14,7 @@ namespace Calculatrice
         MainViewModel mvm = new MainViewModel();
         Boolean resultatAffiche = false;
 
-        const string cheminFichierBinaireHistorique = @"sauvegarde_historique";
+        // const string cheminFichierBinaireHistorique = @"../../sauvegarde_historique";
         List<KeyValuePair<string, string>> historique = new List<KeyValuePair<string, string>>();
 
         public MainWindow()
@@ -22,12 +22,14 @@ namespace Calculatrice
             InitializeComponent();
             this.DataContext = mvm;
 
+            /* Persistance
             // Chargement de l'historique
             using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
             {
                 var binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(stream, historique);
             }
+            */
         }
 
         private void Entrée_Click(object sender, RoutedEventArgs e) 
@@ -299,16 +301,14 @@ namespace Calculatrice
         {
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
-<<<<<<< HEAD
 
             // Erreur formatteur, arrondit le résultat
             // mvm.StrAffichageTbx = Convert.ToDouble(mvm.StrAffichageTbx.Replace(".", ",")).ToString("#,##0", new CultureInfo("fr-FR"));
 
             // Erreur formatteur, ne fonctionne pas
             // mvm.StrAffichageTbx = string.Format(FR, "{0:#.#}", Convert.ToString(mvm.StrAffichageTbx));
-=======
+
             mvm.StrAffichageTbx = string.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
->>>>>>> parent of 5617e0c... ajout de formatter à debug
         }
 
         private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -339,6 +339,7 @@ namespace Calculatrice
             mvm.AffichagesHistoriqueResD = String.Empty;
         }
 
+        /* Persistance
         List<KeyValuePair<string, string>> MainWindow_Closing(object sender, CancelEventArgs e)
         {
             using (Stream stream = File.Open(cheminFichierBinaireHistorique, FileMode.Open))
@@ -347,6 +348,7 @@ namespace Calculatrice
                 return (List<KeyValuePair<string, string>>)binaryFormatter.Deserialize(stream);
             }
         }
+        */
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
