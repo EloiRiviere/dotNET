@@ -1,0 +1,4 @@
+saisie clavier
+
+# bat les couilles
+ajouter , (gérer formatter)

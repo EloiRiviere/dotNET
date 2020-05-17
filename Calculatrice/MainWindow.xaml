@@ -5,27 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculatrice"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="400">
+        Title="Calculateur à gressin"
+        Height="550"
+        Width="400"
+        ResizeMode="NoResize"
+        Topmost="True"
+        WindowStartupLocation="CenterScreen"
+        Background="White" Icon="gressins2.png"
+        KeyDown="Window_KeyDown"
+        Name ="Window1">
 
-    <Grid Name="Grille">
+    <Grid Name="Grille"
+          Background="#FF444444">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
+        <TextBlock Name="SauvegardeCalcul"
+                   Text="{Binding NbInUser}"
+                   Grid.ColumnSpan="2"
+                   TextAlignment="Right"
+                   VerticalAlignment="Center"
+                   Foreground="white"
+                   Margin="10,0"/>
+
         <TextBlock Name="CalculEtResultat"
                    Grid.Column="0"
-                   Grid.Row="0"
-                   Grid.ColumnSpan="2"/>
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   FontSize="22"
+                   TextAlignment="Right"
+                   VerticalAlignment="Center"
+                   Foreground="white"
+                   Text="{Binding StrAffichageTbx}"
+                   Margin="10,0"/>
 
         <Grid Name="Commandes_1"
               Grid.Column="0"
-              Grid.Row="1"
+              Grid.Row="2"
               Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
@@ -36,26 +60,38 @@
 
             <Button Name="modulo"
                     Grid.Column="0"
-                    Content="%"/>
+                    Content="%" 
+                    Click="modulo_Click" 
+                    Background="#FF333333" 
+                    Foreground="white"/>
 
             <Button Name="racine"
                     Grid.Column="1"
-                    Content="√"/>
+                    Content="√" 
+                    Click="racine_Click" 
+                    Background="#FF333333" 
+                    Foreground="white"/>
 
-            <Button Name="carré"
+            <Button Name="carre"
                     Grid.Column="2"
-                    Content="²"/>
+                    Content="²" 
+                    Background="#FF333333" 
+                    Foreground="white"
+                    Click="carre_Click"/>
 
             <Button Name="clear"
                     Grid.Column="3"
-                    Content="Clear"/>
+                    Content="Vider"
+                    Click="clear_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
         </Grid>
 
         <Grid Name="Pad"
               Margin="0,0,0,0"
               Grid.Column="0"
-              Grid.Row="2">
+              Grid.Row="3" Grid.Background="#444444">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -72,66 +108,126 @@
                     Grid.Column="0"
                     Grid.Row="0"
                     Content="1"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="un_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="deux"
                     Grid.Column="1"
                     Grid.Row="0"
                     Content="2"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="deux_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="trois"
                     Grid.Column="2"
                     Grid.Row="0"
                     Content="3"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="trois_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="quatre"
                     Grid.Column="0"
                     Grid.Row="1"
                     Content="4"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="quatre_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="cinq"
                     Grid.Column="1"
                     Grid.Row="1"
                     Content="5"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="cinq_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="six"
                     Grid.Column="2"
                     Grid.Row="1"
                     Content="6"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="six_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="sept"
                     Grid.Column="0"
                     Grid.Row="2"
                     Content="7"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="sept_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="huit"
                     Grid.Column="1"
                     Grid.Row="2"
                     Content="8"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="huit_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="neuf"
                     Grid.Column="2"
                     Grid.Row="2"
                     Content="9"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="neuf_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
-            <Button Name="zéro"
+            <Button Name="history"
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Foreground="white"
+                    Background="#FF333333"
+                    Click="history_Click_Up">
+                <Grid Height="90"
+                          Width="90">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="{Binding AffichagesHistoriqueCalcAD}"
+                                   TextAlignment="Left"
+                                   Grid.Row="0" HorizontalAlignment="Left" Width="90" Height="22" VerticalAlignment="Top"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueResAD}"
+                                   TextAlignment="Right"
+                                   Grid.Row="1"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueCalcD}"
+                                   TextAlignment="Left"
+                                   Grid.Row="2" Height="22" Margin="0,0,0,0.2" VerticalAlignment="Bottom"/>
+                    <TextBlock Text="{Binding AffichagesHistoriqueResD}"
+                                   TextAlignment="Right"
+                                   Grid.Row="3"/>
+                </Grid>
+            </Button>
+
+            <Button Name="zero"
                     Grid.Column="1"
                     Grid.Row="3"
                     Content="0"
-                    FontSize="48"/>
+                    FontSize="48"
+                    Click="zero_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
         </Grid>
 
         <Grid Name="Commandes_2"
               Grid.Column="1"
-              Grid.Row="2">
+              Grid.Row="3"
+              Grid.Background="#444444">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -147,55 +243,188 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="49.6"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Name="delete"
                     Grid.Row="0"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="Delete"/>
+                    Content="Effacer"
+                    Height="34"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Width="98"
+                    Click="delete_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="plus"
                     Grid.Row="1"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Content="+"/>
+                    Content="+" 
+                    Click="plus_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="moins"
-                    Grid.Row="2"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Content="-"/>
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Content="-"
+                    Click="moins_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="fois"
-                    Grid.Row="3"
+                    Grid.Row="2"
                     Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Content="x"/>
+                    Content="x"
+                    Click="fois_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="par"
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="2"
-                    Content="/"/>
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Content="/"
+                    Click="par_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
 
             <Button Name="parenthèse_ouvrante"
-                    Grid.Row="5"
+                    Grid.Row="3"
                     Grid.Column="0"
-                    Content="("/>
+                    Content="("
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="parenthèse_ouvrante_Click"/>
 
             <Button Name="parenthèse_fermante"
-                    Grid.Row="5"
+                    Grid.Row="3"
                     Grid.Column="1"
-                    Content=")"/>
+                    Content=")"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="parenthèse_fermante_Click"/>
+
+            <Button Name="puissance"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Content="^"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="puissance_Click"/>
+
+            <Button Name="logarithme"
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Content="ln"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="logarithme_Click"/>
+
+            <Button Name="sinus"
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="sin"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="sinus_Click"/>
+
+            <Button Name="cosinus"
+                    Grid.Row="6"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="cos"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="cosinus_Click"/>
+
+            <Button Name="tangente"
+                    Grid.Row="7"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Content="tan"
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="tan_Click"/>
+
+            <Button Name="virgule"
+                    Grid.Row="8"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    Content="."
+                    Background="#FF333333"
+                    Foreground="white"
+                    Click="virgule_Click"/>
 
             <Button Name="Entrée"
                     Grid.Row="11"
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
-                    Content="Entrée ◄┘"/>
+                    Content="Entrée ◄┘"
+                    Click="Entrée_Click"
+                    Background="#FF333333"
+                    Foreground="white"/>
+        </Grid>
+
+        <Grid Name="Historique"
+              Visibility="Collapsed"
+              Grid.Column="0"
+              Grid.Row="2"
+              Grid.ColumnSpan="2"
+              Grid.RowSpan="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid   Grid.Column="0"
+                    Background="#FF333333">
+
+                <ListView Background="#FF333333"
+                          Name="ListeHistorique"
+                          Foreground="White"
+                          ItemsSource="{Binding historiqueObservable}"
+                          SelectedItem="{Binding selectedHistoryValue}"
+                          SelectionChanged="ListeHistorique_SelectionChanged"
+                          >
+
+
+                </ListView>
+
+            </Grid>
+
+            <Grid   Grid.Column="1"
+                        Background="#FF333333">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="11*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Click="history_Empty"
+                        Background="#FF333333"
+                        Foreground="white"
+                        Grid.Row="0"
+                        Content="Vider">
+                    
+                </Button>
+
+                <Button Click="history_Click_Down"
+                                Background="#FF333333"
+                                Foreground="white"
+                                Grid.Row="2"
+                                Content="Retour">
+
+                </Button>
+
+            </Grid>
+
         </Grid>
 
     </Grid>
