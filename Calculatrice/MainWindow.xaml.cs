@@ -278,6 +278,10 @@ namespace Calculatrice
         {
             mvm.NbInUser += ".";
             mvm.StrAffichageTbx += ".";
+            if (resultatAffiche == true)
+            {
+                resultatAffiche = false;
+            }
         }
 
         private void history_Click_Up(object sender, RoutedEventArgs e)
