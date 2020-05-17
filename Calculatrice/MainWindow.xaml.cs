@@ -299,12 +299,16 @@ namespace Calculatrice
         {
             Console.WriteLine(mvm.StrAffichageTbx);
             CultureInfo FR = CultureInfo.CreateSpecificCulture("fr-FR");
+<<<<<<< HEAD
 
             // Erreur formatteur, arrondit le résultat
             // mvm.StrAffichageTbx = Convert.ToDouble(mvm.StrAffichageTbx.Replace(".", ",")).ToString("#,##0", new CultureInfo("fr-FR"));
 
             // Erreur formatteur, ne fonctionne pas
             // mvm.StrAffichageTbx = string.Format(FR, "{0:#.#}", Convert.ToString(mvm.StrAffichageTbx));
+=======
+            mvm.StrAffichageTbx = string.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
+>>>>>>> parent of 5617e0c... ajout de formatter à debug
         }
 
         private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
