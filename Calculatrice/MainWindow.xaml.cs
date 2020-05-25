@@ -312,7 +312,7 @@ namespace Calculatrice
             // Erreur formatteur, ne fonctionne pas
             // mvm.StrAffichageTbx = string.Format(FR, "{0:#.#}", Convert.ToString(mvm.StrAffichageTbx));
 
-            mvm.StrAffichageTbx = string.Format(FR, "{0:#,#}", Convert.ToString(mvm.StrAffichageTbx));
+            
         }
 
         private void ListeHistorique_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)

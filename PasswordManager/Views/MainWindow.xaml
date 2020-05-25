@@ -5,20 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordsManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="GressWordManager" Height="450" Width="800" Icon="gressins.ico">
     <DockPanel Name="Background" Background="#FF444444">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Name="Liste" Width="5*"/>
                 <ColumnDefinition Name="Edition" Width="0*"/>
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Name="ZoneRecherche" Height="1*"/>
+                <RowDefinition Name="ZoneListe" Height="9*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Name="RechercheLabel" Width="5*"/>
+                    <ColumnDefinition Name="RechercheZone" Width="1*"/>
+                    <ColumnDefinition Name="ZoneVide" Width="19*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBox Name="Recherche" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" Margin="5px, 0px"/>
+
+                <Image Name="SearchIcon" Source="/PasswordsManager;component/assets/search-icon.png" Width="25px" Grid.Column="1"/>
+
+            </Grid>
 
             <ListBox Grid.Column="0"
+                     Grid.Row="1"
                      Background="Transparent"
-                     HorizontalAlignment="Left" Width="792">
+                     Margin="5px 5px">
             </ListBox>
 
             <Button Grid.Column="0"
+                    Grid.RowSpan="2"
                     Width="20"
                     Height="40"
                     HorizontalAlignment="Right"
@@ -29,13 +48,13 @@
 
             </Button>
 
-            <Grid Grid.Column="1">
+            <Grid Grid.Column="1" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Name="FormulaireEspaceHaut" Height="4*"/>
                     <RowDefinition Name="FormulaireIdentifiant" Height="1*"/>
                     <RowDefinition Name="FormulaireMotDePasse" Height="1*"/>
                     <RowDefinition Name="FormulaireSite" Height="1*"/>
-                    <RowDefinition Name="FormulaireTag" Height="1*"/>
+                    <RowDefinition Name="FormulaireTag" Height="3*"/>
                     <RowDefinition Name="FormulaireBoutonAjout" Height="1*"/>
                     <RowDefinition Name="FormulaireEspaceBas" Height="4*"/>
                 </Grid.RowDefinitions>
@@ -55,13 +74,14 @@
                 <TextBlock Background="Transparent" Grid.Row="3" Grid.Column="1" Text="URL du Site" VerticalAlignment="Center"/>
                 <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
 
-                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Tag" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Tag" VerticalAlignment="Top"/>
+                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="4" Grid.Column="2" Margin="0px 0px 0px 5px"/>
 
                 <Button Background="#FF333333"
                         Grid.Row="5"
                         Grid.Column="2"
-                        Content="Enregistrer"/>
+                        Content="Enregistrer"
+                        Foreground="White"/>
 
             </Grid>
 
