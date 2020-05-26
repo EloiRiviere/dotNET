@@ -24,6 +24,7 @@ namespace PasswordsManager.Views
 
             isEditionOpened = false;
 
+            /*
             var t = new Models.Tag()
             {
                 Label = "tag"
@@ -45,6 +46,7 @@ namespace PasswordsManager.Views
 
             mvm.listeSauvegarde = new System.Collections.ObjectModel.ObservableCollection<Password>();
             mvm.listeSauvegarde.Add(p);
+            */
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

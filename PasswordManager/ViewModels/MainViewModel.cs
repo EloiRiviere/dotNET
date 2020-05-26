@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PasswordsManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -58,8 +59,11 @@ namespace PasswordsManager
             foreach(var pass in l)
             {
                 listeSauvegarde.Add(pass);
+                Console.WriteLine(pass);
             }
+            
 
+            /*
             var t = new Models.Tag()
             {
                 Label = "tag"
@@ -81,6 +85,8 @@ namespace PasswordsManager
 
             DataAccess.PasswordsDbContext.Current.Add(p);
             DataAccess.PasswordsDbContext.Current.SaveChanges();
+            */
+
         }
     }
 }

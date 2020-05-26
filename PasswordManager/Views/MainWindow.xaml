@@ -29,7 +29,7 @@
                     <ColumnDefinition Name="ZoneVide" Width="19*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBox Name="Recherche" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" Margin="5px, 0px" Text="{Binding Recherche}" SelectionChanged="Recherche_SelectionChanged"/>
+                <TextBox Name="Recherche" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" Margin="5px, 0px" Text="{Binding Recherche}" SelectionChanged="Recherche_SelectionChanged" Foreground="White"/>
 
                 <Image Name="SearchIcon" Source="/PasswordsManager;component/assets/search-icon.png" Width="25px" Grid.Column="1"/>
 
@@ -40,8 +40,9 @@
                      Background="Transparent"
                      Margin="5px 5px"
                      ItemsSource="{Binding listeSauvegarde}"
-                     SelectionChanged="ListBox_SelectionChanged">
-                <ListView.View>
+                     SelectionChanged="ListBox_SelectionChanged"
+                     Foreground="White">
+                <ListView.View >
 
                     <GridView   AllowsColumnReorder="true"
                                 ColumnHeaderToolTip="Passwords">
@@ -100,20 +101,20 @@
                     <ColumnDefinition Name="FormulaireEspaceDroit" Width="1*"/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Background="Transparent" Grid.Row="1" Grid.Column="1" Text="Identifiant" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeIdentifiant" Background="Transparent" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireIdentifiant}"/>
+                <TextBlock Background="Transparent" Grid.Row="1" Grid.Column="1" Text="Identifiant" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Name="DonneeIdentifiant" Background="Transparent" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireIdentifiant}" Foreground="White"/>
 
-                <TextBlock Background="Transparent" Grid.Row="2" Grid.Column="1" Text="Mot de passe" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeMotDePasse" Background="Transparent" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireMotDePasse}"/>
+                <TextBlock Background="Transparent" Grid.Row="2" Grid.Column="1" Text="Mot de passe" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Name="DonneeMotDePasse" Background="Transparent" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireMotDePasse}" Foreground="White"/>
 
-                <TextBlock Background="Transparent" Grid.Row="3" Grid.Column="1" Text="URL du Site" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireURL}"/>
+                <TextBlock Background="Transparent" Grid.Row="3" Grid.Column="1" Text="URL du Site" VerticalAlignment="Center" Foreground="White"/>
+                <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireURL}" Foreground="White"/>
 
-                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Label" VerticalAlignment="Top"/>
-                <TextBox Name="DonneeLabel" Background="Transparent" Grid.Row="4" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireLabel}"/>
+                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Label" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox Name="DonneeLabel" Background="Transparent" Grid.Row="4" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireLabel}" Foreground="White"/>
 
-                <TextBlock Background="Transparent" Grid.Row="5" Grid.Column="1" Text="Tag" VerticalAlignment="Top"/>
-                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="5" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireTags}"/>
+                <TextBlock Background="Transparent" Grid.Row="5" Grid.Column="1" Text="Tag" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="5" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireTags}" Foreground="White"/>
                 
                 <Button Background="#FF333333"
                         Grid.Row="6"
