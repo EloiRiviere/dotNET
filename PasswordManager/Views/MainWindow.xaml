@@ -42,10 +42,12 @@
                      ItemsSource="{Binding listeSauvegarde}"
                      SelectionChanged="ListBox_SelectionChanged"
                      Foreground="White">
-                <ListView.View >
+                <ListView.View>
 
                     <GridView   AllowsColumnReorder="true"
-                                ColumnHeaderToolTip="Passwords">
+                                ColumnHeaderToolTip="Passwords"
+                                x:Name="GridViewHeaderStyle">
+                        
 
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Url}"
                                         Header="URL"

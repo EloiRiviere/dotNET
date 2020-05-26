@@ -87,7 +87,7 @@ namespace PasswordsManager
                     }
                 };
 
-                for(int i=1; i<5; i++)
+                for(int i=0; i<5; i++)
                 {
                     listePasswords[i].Tags = new List<PasswordTag>();
                     listePasswords[i].Tags.Add(new PasswordTag()
