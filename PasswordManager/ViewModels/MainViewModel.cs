@@ -1,4 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.EntityFrameworkCore;
+using PasswordsManager.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace PasswordsManager
 {
@@ -10,9 +14,9 @@ namespace PasswordsManager
             set { SetValue(value); }
         }
 
-        public ObservableCollection<UserControlListe> listeSauvegarde
+        public ObservableCollection<Models.Password> listeSauvegarde
         {
-            get { return GetValue<ObservableCollection<UserControlListe>>(); }
+            get { return GetValue<ObservableCollection<Models.Password>>(); }
             set { SetValue(value); }
         }
 
@@ -49,6 +53,34 @@ namespace PasswordsManager
         public MainViewModel()
         {
             Recherche = string.Empty;
+            listeSauvegarde = new ObservableCollection<Models.Password>();
+            var l = DataAccess.PasswordsDbContext.Current.Passwords.Include(p => p.Tags).ThenInclude(pt => pt.Tag).ToList();
+            foreach(var pass in l)
+            {
+                listeSauvegarde.Add(pass);
+            }
+
+            var t = new Models.Tag()
+            {
+                Label = "tag"
+            };
+
+            var p = new Models.Password()
+            {
+                Label = "label1",
+                Login = "login1",
+                Pass = "pass1",
+                Url = "url1"
+            };
+
+            p.Tags = new List<PasswordTag>();
+            p.Tags.Add(new PasswordTag()
+            {
+                Tag = t
+            });
+
+            DataAccess.PasswordsDbContext.Current.Add(p);
+            DataAccess.PasswordsDbContext.Current.SaveChanges();
         }
     }
 }

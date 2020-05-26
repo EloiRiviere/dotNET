@@ -3,9 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:PasswordsManager.Converters"
         xmlns:local="clr-namespace:PasswordsManager"
         mc:Ignorable="d"
         Title="GressWordManager" Height="450" Width="800" Icon="gressins.ico">
+    <Window.Resources>
+        <conv:TagsListToString x:Key="TagsListToString"/>
+    </Window.Resources>
+    
     <DockPanel Name="Background" Background="#FF444444">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -41,23 +46,23 @@
                     <GridView   AllowsColumnReorder="true"
                                 ColumnHeaderToolTip="Passwords">
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=URL}" 
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Url}"
                                         Header="URL"
                                         Width="100"/>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Identifiant}"
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Login}"
                                         Header="Identifiant"
                                         Width="100"/>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Password}" 
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Pass}"
                                         Header="Password"
                                         Width="100"/>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Label}" 
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Label}"
                                         Header="Label"
                                         Width="100"/>
 
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Tags}" 
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Tags, Converter={StaticResource TagsListToString}}"
                                         Header="Tags"
                                         Width="100"/>
                     </GridView>

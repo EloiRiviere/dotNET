@@ -23,6 +23,28 @@ namespace PasswordsManager.Views
             DataContext = mvm;
 
             isEditionOpened = false;
+
+            var t = new Models.Tag()
+            {
+                Label = "tag"
+            };
+
+            var p = new Models.Password()
+            {
+                Label = "label1",
+                Login = "login1",
+                Pass = "pass1",
+                Url = "url1"
+            };
+
+            p.Tags = new List<PasswordTag>();
+            p.Tags.Add(new PasswordTag()
+            {
+                Tag = t
+            });
+
+            mvm.listeSauvegarde = new System.Collections.ObjectModel.ObservableCollection<Password>();
+            mvm.listeSauvegarde.Add(p);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -14,12 +14,9 @@ namespace PasswordsManager.Models
         [ForeignKey(nameof(TagId))]
         public Tag Tag { get; set; }
 
-        public PasswordTag(int passwordid, int tagid, Password password, Tag tag)
+        public PasswordTag()
         {
-            this.PasswordId = passwordid;
-            this.TagId = tagid;
-            this.Password = password;
-            this.Tag = tag;
+
         }
     }
 }

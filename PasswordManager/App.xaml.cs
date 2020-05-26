@@ -17,7 +17,12 @@ namespace PasswordsManager
         protected override async void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            var fileExist = System.IO.File.Exists("passwords.db");
             await DataAccess.PasswordsDbContext.Initialize();
+            if(! fileExist)
+            {
+                // ajouter données bdd
+            }
         }
 
     }

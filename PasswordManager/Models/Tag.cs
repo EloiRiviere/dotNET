@@ -15,12 +15,5 @@ namespace PasswordsManager.Models
 
         [InverseProperty(nameof(PasswordTag.Tag))]
         public List<PasswordTag> Passwords { get; set; }
-
-        public Tag(int id, string label, List<PasswordTag> passwords)
-        {
-            this.Id = id;
-            this.Label = label;
-            this.Passwords = passwords;
-        }
     }
 }
