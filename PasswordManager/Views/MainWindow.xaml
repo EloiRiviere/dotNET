@@ -23,8 +23,8 @@
                     <ColumnDefinition Name="RechercheZone" Width="1*"/>
                     <ColumnDefinition Name="ZoneVide" Width="19*"/>
                 </Grid.ColumnDefinitions>
-                
-                <TextBox Name="Recherche" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" Margin="5px, 0px"/>
+
+                <TextBox Name="Recherche" Background="Transparent" Grid.Column="0" VerticalAlignment="Center" Margin="5px, 0px" Text="{Binding Recherche}" SelectionChanged="Recherche_SelectionChanged"/>
 
                 <Image Name="SearchIcon" Source="/PasswordsManager;component/assets/search-icon.png" Width="25px" Grid.Column="1"/>
 
@@ -33,7 +33,9 @@
             <ListBox Grid.Column="0"
                      Grid.Row="1"
                      Background="Transparent"
-                     Margin="5px 5px">
+                     Margin="5px 5px"
+                     ItemsSource="{Binding listeSauvegarde}"
+                     SelectionChanged="ListBox_SelectionChanged">
             </ListBox>
 
             <Button Grid.Column="0"
@@ -54,6 +56,7 @@
                     <RowDefinition Name="FormulaireIdentifiant" Height="1*"/>
                     <RowDefinition Name="FormulaireMotDePasse" Height="1*"/>
                     <RowDefinition Name="FormulaireSite" Height="1*"/>
+                    <RowDefinition Name="FormulaireLabel" Height="1*"/>
                     <RowDefinition Name="FormulaireTag" Height="3*"/>
                     <RowDefinition Name="FormulaireBoutonAjout" Height="1*"/>
                     <RowDefinition Name="FormulaireEspaceBas" Height="4*"/>
@@ -66,22 +69,26 @@
                 </Grid.ColumnDefinitions>
 
                 <TextBlock Background="Transparent" Grid.Row="1" Grid.Column="1" Text="Identifiant" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeIdentifiant" Background="Transparent" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeIdentifiant" Background="Transparent" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireIdentifiant}"/>
 
                 <TextBlock Background="Transparent" Grid.Row="2" Grid.Column="1" Text="Mot de passe" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeMotDePasse" Background="Transparent" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeMotDePasse" Background="Transparent" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireMotDePasse}"/>
 
                 <TextBlock Background="Transparent" Grid.Row="3" Grid.Column="1" Text="URL du Site" VerticalAlignment="Center"/>
-                <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBox Name="DonneeSite" Background="Transparent" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" Text="{Binding FormulaireURL}"/>
 
-                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Tag" VerticalAlignment="Top"/>
-                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="4" Grid.Column="2" Margin="0px 0px 0px 5px"/>
+                <TextBlock Background="Transparent" Grid.Row="4" Grid.Column="1" Text="Label" VerticalAlignment="Top"/>
+                <TextBox Name="DonneeLabel" Background="Transparent" Grid.Row="4" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireLabel}"/>
 
+                <TextBlock Background="Transparent" Grid.Row="5" Grid.Column="1" Text="Tag" VerticalAlignment="Top"/>
+                <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="5" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireTags}"/>
+                
                 <Button Background="#FF333333"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.Column="2"
                         Content="Enregistrer"
-                        Foreground="White"/>
+                        Foreground="White"
+                        Click="Formulaire_Button_Click"/>
 
             </Grid>
 
