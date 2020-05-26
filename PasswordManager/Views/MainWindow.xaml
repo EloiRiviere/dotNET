@@ -30,13 +30,40 @@
 
             </Grid>
 
-            <ListBox Grid.Column="0"
+            <ListView Grid.Column="0"
                      Grid.Row="1"
                      Background="Transparent"
                      Margin="5px 5px"
                      ItemsSource="{Binding listeSauvegarde}"
                      SelectionChanged="ListBox_SelectionChanged">
-            </ListBox>
+                <ListView.View>
+
+                    <GridView   AllowsColumnReorder="true"
+                                ColumnHeaderToolTip="Passwords">
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=URL}" 
+                                        Header="URL"
+                                        Width="100"/>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Identifiant}"
+                                        Header="Identifiant"
+                                        Width="100"/>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Password}" 
+                                        Header="Password"
+                                        Width="100"/>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Label}" 
+                                        Header="Label"
+                                        Width="100"/>
+
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Tags}" 
+                                        Header="Tags"
+                                        Width="100"/>
+                    </GridView>
+
+                </ListView.View>
+            </ListView>
 
             <Button Grid.Column="0"
                     Grid.RowSpan="2"

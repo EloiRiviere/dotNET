@@ -24,5 +24,14 @@ namespace PasswordsManager.Models
         [InverseProperty(nameof(PasswordTag.Password))]
         public List<PasswordTag> Tags { get; set; }
 
+        public Password(int id, string label, string login, string pass, string url, List<PasswordTag> tags)
+        {
+            this.Id = id;
+            this.Label = label;
+            this.Login = login;
+            this.Pass = pass;
+            this.Url = url;
+            this.Tags = tags;
+        }
     }
 }

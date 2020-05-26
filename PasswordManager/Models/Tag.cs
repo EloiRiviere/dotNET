@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Media.TextFormatting;
 
 namespace PasswordsManager.Models
 {
@@ -14,5 +15,12 @@ namespace PasswordsManager.Models
 
         [InverseProperty(nameof(PasswordTag.Tag))]
         public List<PasswordTag> Passwords { get; set; }
+
+        public Tag(int id, string label, List<PasswordTag> passwords)
+        {
+            this.Id = id;
+            this.Label = label;
+            this.Passwords = passwords;
+        }
     }
 }
