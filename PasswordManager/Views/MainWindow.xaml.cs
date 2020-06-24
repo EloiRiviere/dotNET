@@ -1,6 +1,10 @@
-﻿using PasswordsManager.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PasswordsManager.Converters;
+using PasswordsManager.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -70,7 +74,33 @@ namespace PasswordsManager.Views
 
         private void Recherche_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("Evènement - Recherche - SelectionChanged : " + Recherche.Text);
+            string recherche = Recherche.Text;
+
+            Console.WriteLine("Evènement - Recherche - SelectionChanged : " + recherche);
+
+            mvm.listeSauvegarde = new ObservableCollection<Models.Password>();
+
+            var l = DataAccess.PasswordsDbContext.Current.Passwords.Include(p => p.Tags).ThenInclude(pt => pt.Tag).ToList();
+
+
+
+            foreach (var pass in l)
+            {
+                Console.WriteLine("pass.Label : " + pass.Label + " | pass.Label.IndexOf(recherche) : " + pass.Label.IndexOf(recherche));
+
+                if (!recherche.Equals(String.Empty))
+                {
+                    if (pass.Label.IndexOf(recherche) >= 0)
+                    {
+                        mvm.listeSauvegarde.Add(pass);
+                    }
+                }
+                else
+                {
+                    mvm.listeSauvegarde.Add(pass);
+                }
+            }
+
         }
 
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
