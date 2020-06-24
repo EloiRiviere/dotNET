@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PasswordsManager.Converters;
+// using PasswordsManager.Converters;
 using PasswordsManager.Models;
 using System;
 using System.Collections.Generic;
@@ -74,27 +74,40 @@ namespace PasswordsManager.Views
 
         private void Recherche_SelectionChanged(object sender, RoutedEventArgs e)
         {
+            /* Récupération de la chaîne de caractères de recherche */
             string recherche = Recherche.Text;
 
             Console.WriteLine("Evènement - Recherche - SelectionChanged : " + recherche);
 
+            /* Mise à jour de la liste */
             mvm.listeSauvegarde = new ObservableCollection<Models.Password>();
 
             var l = DataAccess.PasswordsDbContext.Current.Passwords.Include(p => p.Tags).ThenInclude(pt => pt.Tag).ToList();
 
 
-
+            /* Pour chaque mot de passe */
             foreach (var pass in l)
             {
                 Console.WriteLine("pass.Label : " + pass.Label + " | pass.Label.IndexOf(recherche) : " + pass.Label.IndexOf(recherche));
 
+                /* Si la recherche n'est pas vide */
                 if (!recherche.Equals(String.Empty))
                 {
+                    /* Si il y a un match de la recherche dans le label du password */
                     if (pass.Label.IndexOf(recherche) >= 0)
                     {
                         mvm.listeSauvegarde.Add(pass);
                     }
+
+                    /* 
+                     * !!!
+                     * 
+                     * Ajouter cas de match avec tag, voir → PasswordsManager.Converters;
+                     * 
+                     * !!!
+                     */
                 }
+                /* Si la recherche est vide, on affiche tous les password */
                 else
                 {
                     mvm.listeSauvegarde.Add(pass);
@@ -105,12 +118,16 @@ namespace PasswordsManager.Views
 
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            Console.WriteLine("Evènement - ListBox - SelectionChanged");
         }
 
         private void Formulaire_Button_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Evènement - Formulaire - Validation : " + Recherche.Text);
+
+            /*
+             * !!! ajouter le nouveau password à partir du formulaire !!!
+             */
 
             // listePasswords.Add(new Password());
         }

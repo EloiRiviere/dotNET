@@ -41,7 +41,8 @@
                      Margin="5px 5px"
                      ItemsSource="{Binding listeSauvegarde}"
                      SelectionChanged="ListBox_SelectionChanged"
-                     Foreground="White">
+                     Foreground="White"
+                     Name="Liste_Passwords">
                 <ListView.View>
 
                     <GridView   AllowsColumnReorder="true"
