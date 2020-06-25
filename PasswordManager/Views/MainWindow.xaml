@@ -84,9 +84,9 @@
                     Margin="5px, 0px"
                     Content="Supprimer"
                     Foreground="White"
-                    Click="Button_Supprimer">
-
-
+                    Click="Button_Supprimer"
+                    Visibility="Collapsed"
+                    Name="ButtonSupprimer">
             </Button>
 
             <Button Grid.Column="0"

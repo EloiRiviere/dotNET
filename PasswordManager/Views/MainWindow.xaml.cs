@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 // using PasswordsManager.Converters;
 using PasswordsManager.Models;
+using PasswordsManager.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -119,11 +120,15 @@ namespace PasswordsManager.Views
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             Console.WriteLine("Evènement - ListBox - SelectionChanged");
+            ButtonSupprimer.Visibility = Visibility.Visible;
+
         }
 
         private void Formulaire_Button_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("Evènement - Formulaire - Validation : " + Recherche.Text);
+
+            string encryptedPassword = Crypto.Encrypt(mvm.FormulaireMotDePasse);
 
             Password password = new Models.Password()
             {
@@ -151,19 +156,19 @@ namespace PasswordsManager.Views
 
             mvm.listeSauvegarde.Add(password);
             Console.WriteLine(password);
+
+            // cryptage du mot de passe et mise en base
+            password.Pass = encryptedPassword;
             DataAccess.PasswordsDbContext.Current.Add(password);
-
-
-            /*
-             * !!! ajouter le nouveau password à partir du formulaire !!!
-             */
-
-            // listePasswords.Add(new Password());
         }
 
         private void Button_Supprimer(object sender, RoutedEventArgs e)
         {
-
+            Models.Password password = (Models.Password)Liste_Passwords.SelectedItem;
+            DataAccess.PasswordsDbContext.Current.Remove(password);
+            DataAccess.PasswordsDbContext.Current.SaveChanges();
+            mvm.listeSauvegarde.Remove(password);
+            ButtonSupprimer.Visibility = Visibility.Collapsed;
         }
     }
 }
