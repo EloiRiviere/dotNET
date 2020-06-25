@@ -14,9 +14,9 @@ namespace PasswordsManager.Models
         [ForeignKey(nameof(TagId))]
         public Tag Tag { get; set; }
 
-        public PasswordTag()
+        /*public PasswordTag()
         {
 
-        }
+        }*/
     }
 }

@@ -125,11 +125,45 @@ namespace PasswordsManager.Views
         {
             Console.WriteLine("Evènement - Formulaire - Validation : " + Recherche.Text);
 
+            Password password = new Models.Password()
+            {
+                Label = mvm.FormulaireLabel,
+                Login = mvm.FormulaireIdentifiant,
+                Pass = mvm.FormulaireMotDePasse,
+                Url = mvm.FormulaireURL
+            };
+
+            Tag tag = new Models.Tag()
+            {
+                Label = mvm.FormulaireTags
+            };
+
+            password.Tags = new List<PasswordTag>();
+
+            PasswordTag passwordTag = new PasswordTag()
+            {
+                Tag = tag
+            };
+
+            DataAccess.PasswordsDbContext.Current.Add(password);
+
+            Console.WriteLine("Password créé : " + password);
+
+            mvm.listeSauvegarde.Add(password);
+            Console.WriteLine(password);
+            DataAccess.PasswordsDbContext.Current.Add(password);
+
+
             /*
              * !!! ajouter le nouveau password à partir du formulaire !!!
              */
 
             // listePasswords.Add(new Password());
+        }
+
+        private void Button_Supprimer(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

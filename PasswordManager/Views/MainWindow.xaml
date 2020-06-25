@@ -10,7 +10,7 @@
     <Window.Resources>
         <conv:TagsListToString x:Key="TagsListToString"/>
     </Window.Resources>
-    
+
     <DockPanel Name="Background" Background="#FF444444">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -20,6 +20,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Name="ZoneRecherche" Height="1*"/>
                 <RowDefinition Name="ZoneListe" Height="9*"/>
+                <RowDefinition Name="ZoneBoutonSuppression" Height="1*"/>
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Grid.Column="0">
@@ -48,7 +49,7 @@
                     <GridView   AllowsColumnReorder="true"
                                 ColumnHeaderToolTip="Passwords"
                                 x:Name="GridViewHeaderStyle">
-                        
+
 
                         <GridViewColumn DisplayMemberBinding="{Binding Path=Url}"
                                         Header="URL"
@@ -75,6 +76,20 @@
             </ListView>
 
             <Button Grid.Column="0"
+                    Grid.Row="2"
+                    Width="150"
+                    Height="25"
+                    HorizontalAlignment="Right"
+                    Background="#FF333333"
+                    Margin="5px, 0px"
+                    Content="Supprimer"
+                    Foreground="White"
+                    Click="Button_Supprimer">
+
+
+            </Button>
+
+            <Button Grid.Column="0"
                     Grid.RowSpan="2"
                     Width="20"
                     Height="40"
@@ -88,14 +103,14 @@
 
             <Grid Grid.Column="1" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Name="FormulaireEspaceHaut" Height="4*"/>
-                    <RowDefinition Name="FormulaireIdentifiant" Height="1*"/>
-                    <RowDefinition Name="FormulaireMotDePasse" Height="1*"/>
-                    <RowDefinition Name="FormulaireSite" Height="1*"/>
-                    <RowDefinition Name="FormulaireLabel" Height="1*"/>
-                    <RowDefinition Name="FormulaireTag" Height="3*"/>
-                    <RowDefinition Name="FormulaireBoutonAjout" Height="1*"/>
-                    <RowDefinition Name="FormulaireEspaceBas" Height="4*"/>
+                    <RowDefinition Name="FormulaireEspaceHaut" Height="105*"/>
+                    <RowDefinition Name="FormulaireIdentifiant" Height="26*"/>
+                    <RowDefinition Name="FormulaireMotDePasse" Height="26.4"/>
+                    <RowDefinition Name="FormulaireSite" Height="26*"/>
+                    <RowDefinition Name="FormulaireLabel" Height="26*"/>
+                    <RowDefinition Name="FormulaireTag" Height="78*"/>
+                    <RowDefinition Name="FormulaireBoutonAjout" Height="26*"/>
+                    <RowDefinition Name="FormulaireEspaceBas" Height="105*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Name="FormulaireEspaceGauche" Width="1*"/>
@@ -118,7 +133,7 @@
 
                 <TextBlock Background="Transparent" Grid.Row="5" Grid.Column="1" Text="Tag" VerticalAlignment="Top" Foreground="White"/>
                 <TextBox Name="DonneeTag" Background="Transparent" Grid.Row="5" Grid.Column="2" Margin="0px 0px 0px 5px" Text="{Binding FormulaireTags}" Foreground="White"/>
-                
+
                 <Button Background="#FF333333"
                         Grid.Row="6"
                         Grid.Column="2"

@@ -23,5 +23,11 @@ namespace PasswordsManager.Models
 
         [InverseProperty(nameof(PasswordTag.Password))]
         public List<PasswordTag> Tags { get; set; }
+
+        override
+        public string ToString()
+        {
+            return "Id : " + this.Id + " | Login : " + this.Login + " | Label : " + this.Label + " | Pass : " + this.Pass + " | Url : " + this.Url + " | Tags : " + this.Tags;
+        }
     }
 }
