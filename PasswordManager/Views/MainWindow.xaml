@@ -39,11 +39,11 @@
             <ListView Grid.Column="0"
                      Grid.Row="1"
                      Background="Transparent"
-                     Margin="5px 5px"
+                     Margin="5,4.6,0,4.6"
                      ItemsSource="{Binding listeSauvegarde}"
                      SelectionChanged="ListBox_SelectionChanged"
                      Foreground="White"
-                     Name="Liste_Passwords">
+                     Name="Liste_Passwords" HorizontalAlignment="Left" Width="784">
                 <ListView.View>
 
                     <GridView   AllowsColumnReorder="true"
@@ -81,6 +81,20 @@
                     Height="25"
                     HorizontalAlignment="Right"
                     Background="#FF333333"
+                    Margin="165px, 0px"
+                    Content="Modifier"
+                    Foreground="White"
+                    Click="Button_Modifier"
+                    Visibility="Collapsed"
+                    Name="ButtonModifier">
+            </Button>
+
+            <Button Grid.Column="0"
+                    Grid.Row="2"
+                    Width="150"
+                    Height="25"
+                    HorizontalAlignment="Right"
+                    Background="#FF333333"
                     Margin="5px, 0px"
                     Content="Supprimer"
                     Foreground="White"
@@ -95,13 +109,13 @@
                     Height="40"
                     HorizontalAlignment="Right"
                     Background="#FF333333"
-                    Click="Button_Click">
+                    Click="Button_Volet">
 
                 <Image Name="Fleche" Source="/PasswordsManager;component/assets/chevron_gauche.png"/>
 
             </Button>
 
-            <Grid Grid.Column="1" Grid.RowSpan="2">
+            <Grid Grid.Column="1" Grid.RowSpan="2" Name ="FormulaireCreation">
                 <Grid.RowDefinitions>
                     <RowDefinition Name="FormulaireEspaceHaut" Height="105*"/>
                     <RowDefinition Name="FormulaireIdentifiant" Height="26*"/>
@@ -110,6 +124,7 @@
                     <RowDefinition Name="FormulaireLabel" Height="26*"/>
                     <RowDefinition Name="FormulaireTag" Height="78*"/>
                     <RowDefinition Name="FormulaireBoutonAjout" Height="26*"/>
+                    <RowDefinition Name="FormulaireBoutonAnnulation" Height="26*"/>
                     <RowDefinition Name="FormulaireEspaceBas" Height="105*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -140,6 +155,13 @@
                         Content="Enregistrer"
                         Foreground="White"
                         Click="Formulaire_Button_Click"/>
+                
+                <Button Background="#FF333333"
+                        Grid.Row="7"
+                        Grid.Column="2"
+                        Content="Annuler"
+                        Foreground="White"
+                        Click="Formulaire_Button_Annuler_Click"/>
 
             </Grid>
 
